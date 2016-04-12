@@ -36,7 +36,7 @@
 			throw "error in JQuery.paginemytable: footerSelector must contain only letters. Characters [" + settings.footerSelector.match(/[^a-z]/gi).join(", ") + "] found";
 
 
-		if ( settings.pageLength == 0 )
+		if ( settings.pageLength === 0 )
 			throw "error in JQuery.paginemytable: pageLength can not be 0";
 
 		if ( settings.pageLength == 1 )
@@ -71,13 +71,13 @@
 					table.find("tbody:nth-of-type(" + n + ")").css("display", "table-row-group");
 					table.data("index", parseInt(n));
 			}
-		}
+		};
 
 		var initTableBody = function(table) {
 			var rows = table.find(settings.bodySelector + " " + settings.rowSelector);
 			var tableBody = table.find(settings.bodySelector);
 
-			settings.nbPages = ( settings.nbPages > rows.length / settings.pageLength || settings.nbPages == 0 ) ? rows.length / settings.pageLength : settings.nbPages; //Pour ne pas générer plus de pages qu'il n'en faut
+			settings.nbPages = ( settings.nbPages > rows.length / settings.pageLength || settings.nbPages === 0 ) ? rows.length / settings.pageLength : settings.nbPages; //Pour ne pas générer plus de pages qu'il n'en faut
 			settings.nbPages = Math.ceil(settings.nbPages);
 
 			//On vide la table, son contenu étant stocké dans rows
@@ -94,7 +94,7 @@
 			}
 			table.find("tbody:not(:first-of-type)").css("display", "none"); //On cache tout sauf la première page
 			table.data("index", 1); //Et on met l'index à 1
-		}
+		};
 
 		var initTableFooter = function(table) {
 			var nbColumns = table.find(settings.headerSelector + " tr").children().length;
@@ -123,12 +123,12 @@
 					switchTablePage(table, i);
 				});
 			});
-		}
+		};
 
 		var initTable = function(table) {
 			initTableBody(table);
 			initTableFooter(table);
-		}
+		};
 		//Fin des fonctions
 
 		//Main
@@ -138,5 +138,5 @@
 
 		return this;
 
-	} // Fin de paginate()
+	}; // Fin de paginate()
 }(jQuery));
