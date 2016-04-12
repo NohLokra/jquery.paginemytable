@@ -1,3 +1,4 @@
+/* minifyOnSave, filenamePattern: $1.min.$2 */
 (function($) {
 
 	$.fn.paginate = function(options) {
